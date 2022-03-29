@@ -34,12 +34,13 @@ const [friends, setFriends] = useState([])
     axiosWithAuth().get(friendURL)
     .then(res => {
       setFriends(res.data)
+      
     })
     .catch(err => {
       debugger
     })
   }
-
+  
   return (
     <Router>
     <div className="App">
@@ -54,7 +55,7 @@ const [friends, setFriends] = useState([])
         <LoginForm login={login} />
       </Route>
       <Route path='/friends'>
-        <FriendList getFriends={getFriends} />
+        <FriendList getFriends={getFriends}  friends={friends}/>
       </Route>
       <Route path='/friends/add' >
         <AddFriend />
